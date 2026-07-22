@@ -141,6 +141,11 @@
       margin-top: 0.25rem;
       font-style: italic;
     }
+    .alcohol-info {
+      font-size: 0.75rem;
+      color: #946b44;
+      margin-top: 0.3rem;
+    }
     .price {
       font-size: 1.1rem;
       font-weight: 500;
@@ -189,7 +194,7 @@
 
     <div id="menu-content"></div>
 
-    <div class="footer-note">—— 经典永不过时 ——</div>
+    <div class="footer-note">—— 经典永不过时 · 适量饮酒 请勿酒驾 ——</div>
   </div>
 
   <script>
@@ -197,23 +202,29 @@
     const CDN_PREFIX = "";
 
     const cocktails = [
-      { zh: "白色佳人", en: "White Lady", desc: "金酒 · 君度 · 柠檬汁", price: "¥42", base: "gin", length: "short", img: "white-lady.webp" },
-      { zh: "金汤力", en: "Gin & Tonic", desc: "金酒 · 汤力水 · 柠檬", price: "¥38", base: "gin", length: "long", img: "gin-tonic.webp" },
-      { zh: "金菲士", en: "Gin Fizz", desc: "金酒 · 柠檬 · 苏打 · 蛋白", price: "¥42", base: "gin", length: "long", img: "gin-fizz.webp" },
-      { zh: "吉姆雷特", en: "Gimlet", desc: "金酒 · 青柠汁 · 糖", price: "¥42", base: "gin", length: "short", img: "gimlet.webp" },
-      { zh: "干马天尼", en: "Dry Martini", desc: "金酒 · 干味美思 · 橄榄", price: "¥52", base: "gin", length: "short", img: "dry-martini.webp" },
-      { zh: "螺丝起子", en: "Screwdriver", desc: "伏特加 · 橙汁", price: "¥38", base: "vodka", length: "long", img: "screwdriver.webp" },
-      { zh: "大都会", en: "Cosmopolitan", desc: "伏特加 · 蔓越莓 · 青柠", price: "¥42", base: "vodka", length: "short", img: "cosmopolitan.webp" },
-      { zh: "莫斯科骡子", en: "Moscow Mule", desc: "伏特加 · 姜汁啤酒 · 青柠", price: "¥38", base: "vodka", length: "long", img: "moscow-mule.webp" },
-      { zh: "椰林飘香", en: "Piña Colada", desc: "朗姆 · 椰浆 · 菠萝汁", price: "¥42", base: "rum", length: "long", img: "pina-colada.webp" },
-      { zh: "自由古巴", en: "Cuba Libre", desc: "朗姆 · 可乐 · 青柠", price: "¥38", base: "rum", length: "long", img: "cuba-libre.webp" },
-      { zh: "X.Y.Z.", en: "X.Y.Z. Cocktail", desc: "朗姆 · 君度 · 柠檬汁", price: "¥42", base: "rum", length: "short", img: "xyz.webp" },
-      { zh: "大吉利", en: "Daiquiri", desc: "朗姆 · 青柠汁 · 糖", price: "¥42", base: "rum", length: "short", img: "daiquiri.webp" },
-      { zh: "玛格丽特", en: "Margarita", desc: "龙舌兰 · 君度 · 青柠 · 盐边", price: "¥42", base: "tequila", length: "short", img: "margarita.webp" },
-      { zh: "嗨棒", en: "Highball", desc: "威士忌 · 苏打水", price: "¥38", base: "whiskey", length: "long", img: "highball.webp" },
-      { zh: "威士忌酸", en: "Whiskey Sour", desc: "波本 · 柠檬汁 · 糖 · 蛋白", price: "¥42", base: "whiskey", length: "short", img: "whiskey-sour.webp" },
-      { zh: "长岛冰茶", en: "Long Island Iced Tea", desc: "五种烈酒 · 柠檬 · 可乐", price: "¥48", base: "mix", length: "long", img: "long-island-iced-tea.webp" },
-      { zh: "维斯帕", en: "Vesper", desc: "金酒 · 伏特加 · 莉兰开胃酒", price: "¥52", base: "mix", length: "short", img: "vesper.webp" }
+      { zh: "白色佳人", en: "White Lady", desc: "金酒 · 君度 · 柠檬汁", price: "¥42", base: "gin", length: "short", img: "white-lady.webp", abv:"28%vol", star:"⭐⭐⭐⭐" },
+      { zh: "金汤力", en: "Gin & Tonic", desc: "金酒 · 汤力水 · 柠檬", price: "¥36", base: "gin", length: "long", img: "gin-tonic.webp", abv:"12%vol", star:"⭐⭐" },
+      { zh: "金菲士", en: "Gin Fizz", desc: "金酒 · 柠檬 · 苏打 · 蛋白", price: "¥42", base: "gin", length: "long", img: "gin-fizz.webp", abv:"14%vol", star:"⭐⭐⭐" },
+      { zh: "吉姆雷特", en: "Gimlet", desc: "金酒 · 青柠汁 · 糖", price: "¥42", base: "gin", length: "short", img: "gimlet.webp", abv:"26%vol", star:"⭐⭐⭐⭐" },
+      { zh: "上海霸克", en: "Shanghai Buck", desc: "金酒 · 青柠 · 姜汁汽水", price: "¥42", base: "gin", length: "long", img: "shanghai-buck.webp", abv:"13%vol", star:"⭐⭐⭐" },
+      { zh: "干马天尼", en: "Dry Martini", desc: "金酒 · 干味美思 · 橄榄", price: "¥56", base: "gin", length: "short", img: "dry-martini.webp", abv:"32%vol", star:"⭐⭐⭐⭐⭐" },
+
+      { zh: "螺丝起子", en: "Screwdriver", desc: "伏特加 · 橙汁", price: "¥36", base: "vodka", length: "long", img: "screwdriver.webp", abv:"13%vol", star:"⭐⭐⭐" },
+      { zh: "大都会", en: "Cosmopolitan", desc: "伏特加 · 蔓越莓 · 青柠", price: "¥42", base: "vodka", length: "short", img: "cosmopolitan.webp", abv:"22%vol", star:"⭐⭐⭐⭐" },
+      { zh: "莫斯科骡子", en: "Moscow Mule", desc: "伏特加 · 姜汁啤酒 · 青柠", price: "¥36", base: "vodka", length: "long", img: "moscow-mule.webp", abv:"12%vol", star:"⭐⭐" },
+
+      { zh: "椰林飘香", en: "Piña Colada", desc: "朗姆 · 椰浆 · 菠萝汁", price: "¥42", base: "rum", length: "long", img: "pina-colada.webp", abv:"14%vol", star:"⭐⭐⭐" },
+      { zh: "自由古巴", en: "Cuba Libre", desc: "朗姆 · 可乐 · 青柠", price: "¥36", base: "rum", length: "long", img: "cuba-libre.webp", abv:"11%vol", star:"⭐⭐" },
+      { zh: "X.Y.Z.", en: "X.Y.Z. Cocktail", desc: "朗姆 · 君度 · 柠檬汁", price: "¥42", base: "rum", length: "short", img: "xyz.webp", abv:"24%vol", star:"⭐⭐⭐⭐" },
+      { zh: "大吉利", en: "Daiquiri", desc: "朗姆 · 青柠汁 · 糖", price: "¥42", base: "rum", length: "short", img: "daiquiri.webp", abv:"23%vol", star:"⭐⭐⭐⭐" },
+
+      { zh: "玛格丽特", en: "Margarita", desc: "龙舌兰 · 君度 · 青柠 · 盐边", price: "¥42", base: "tequila", length: "short", img: "margarita.webp", abv:"25%vol", star:"⭐⭐⭐⭐" },
+
+      { zh: "嗨棒", en: "Highball", desc: "威士忌 · 苏打水", price: "¥36", base: "whiskey", length: "long", img: "highball.webp", abv:"10%vol", star:"⭐⭐" },
+      { zh: "威士忌酸", en: "Whiskey Sour", desc: "波本 · 柠檬汁 · 糖 · 蛋白", price: "¥42", base: "whiskey", length: "short", img: "whiskey-sour.webp", abv:"21%vol", star:"⭐⭐⭐⭐" },
+
+      { zh: "长岛冰茶", en: "Long Island Iced Tea", desc: "五种烈酒 · 柠檬 · 可乐", price: "¥48", base: "mix", length: "long", img: "long-island-iced-tea.webp", abv:"22%vol", star:"⭐⭐⭐⭐" },
+      { zh: "维斯帕", en: "Vesper", desc: "金酒 · 伏特加 · 莉兰开胃酒", price: "¥56", base: "mix", length: "short", img: "vesper.webp", abv:"30%vol", star:"⭐⭐⭐⭐⭐" }
     ];
 
     const baseCategories = {
@@ -245,6 +256,7 @@
                 <div class="zh-name">${c.zh}</div>
                 <div class="en-name">${c.en}</div>
                 <div class="desc">${c.desc}</div>
+                <div class="alcohol-info">酒精度 ${c.abv} ｜烈度 ${c.star}</div>
               </div>
               <div class="price">${c.price}</div>
             </div>

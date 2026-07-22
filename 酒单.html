@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>经典鸡尾酒单</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #1a1e24;
+      font-family: 'Georgia', 'PingFang SC', 'Microsoft YaHei', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+      color: #d4d4d4;
+    }
+    .menu {
+      max-width: 680px;
+      width: 100%;
+      background: #faf8f2;
+      color: #2d2d2d;
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      border: 1px solid #d0c8b0;
+    }
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      font-weight: 400;
+      letter-spacing: 0.3rem;
+      color: #3a2c1c;
+      border-bottom: 2px solid #c0a97a;
+      padding-bottom: 0.8rem;
+      margin-bottom: 1.5rem;
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    .selector-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .selector-bar label {
+      font-size: 0.95rem;
+      color: #5a4a32;
+      font-weight: 500;
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    select {
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      border: 1px solid #c0a97a;
+      background: #fff;
+      font-size: 0.95rem;
+      color: #3a2c1c;
+      outline: none;
+      font-family: inherit;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233a2c1c' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    .category {
+      margin-bottom: 2rem;
+    }
+    .category-title {
+      font-size: 1.2rem;
+      color: #7a623c;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      border-left: 4px solid #c0a97a;
+      padding-left: 0.8rem;
+      margin-bottom: 0.8rem;
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      padding: 0.7rem 0;
+      border-bottom: 1px dotted #c0a97a;
+      transition: background 0.2s;
+    }
+    .item:hover {
+      background: rgba(192,169,122,0.05);
+    }
+    .item:last-of-type {
+      border-bottom: none;
+    }
+    .name-block {
+      display: flex;
+      flex-direction: column;
+    }
+    .zh-name {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #1e1e1e;
+      letter-spacing: 0.05em;
+    }
+    .en-name {
+      font-size: 0.75rem;
+      color: #8b7a62;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 0.15rem;
+    }
+    .desc {
+      font-size: 0.8rem;
+      color: #5f5f5f;
+      margin-top: 0.25rem;
+      font-style: italic;
+      max-width: 80%;
+    }
+    .price {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #3a2c1c;
+      background: #ede6d6;
+      padding: 0.25rem 0.8rem;
+      border-radius: 2rem;
+      white-space: nowrap;
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #8b7a62;
+      letter-spacing: 0.1em;
+    }
+    @media (max-width: 500px) {
+      .menu {
+        padding: 2rem 1.2rem;
+      }
+      .desc {
+        max-width: 100%;
+      }
+      .price {
+        margin-top: 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <h1>经典鸡尾酒单</h1>
+
+    <div class="selector-bar">
+      <label for="category-select">分类方式：</label>
+      <select id="category-select">
+        <option value="base">按基酒分类</option>
+        <option value="length">按长饮 / 短饮</option>
+      </select>
+    </div>
+
+    <div id="menu-content"></div>
+
+    <div class="footer-note">—— 经典永不过时 ——</div>
+  </div>
+
+  <script>
+    const cocktails = [
+      { zh: "白色佳人", en: "White Lady", desc: "金酒 · 君度 · 柠檬汁", price: "¥78", base: "gin", length: "short" },
+      { zh: "金汤力", en: "Gin & Tonic", desc: "金酒 · 汤力水 · 柠檬", price: "¥70", base: "gin", length: "long" },
+      { zh: "金菲士", en: "Gin Fizz", desc: "金酒 · 柠檬 · 苏打 · 蛋白", price: "¥78", base: "gin", length: "long" },
+      { zh: "吉姆雷特", en: "Gimlet", desc: "金酒 · 青柠汁 · 糖", price: "¥70", base: "gin", length: "short" },
+      { zh: "干马天尼", en: "Dry Martini", desc: "金酒 · 干味美思 · 橄榄", price: "¥88", base: "gin", length: "short" },
+      { zh: "螺丝起子", en: "Screwdriver", desc: "伏特加 · 橙汁", price: "¥68", base: "vodka", length: "long" },
+      { zh: "大都会", en: "Cosmopolitan", desc: "伏特加 · 蔓越莓 · 青柠", price: "¥82", base: "vodka", length: "short" },
+      { zh: "莫斯科骡子", en: "Moscow Mule", desc: "伏特加 · 姜汁啤酒 · 青柠", price: "¥72", base: "vodka", length: "long" },
+      { zh: "椰林飘香", en: "Piña Colada", desc: "朗姆 · 椰浆 · 菠萝汁", price: "¥85", base: "rum", length: "long" },
+      { zh: "自由古巴", en: "Cuba Libre", desc: "朗姆 · 可乐 · 青柠", price: "¥65", base: "rum", length: "long" },
+      { zh: "X.Y.Z.", en: "X.Y.Z. Cocktail", desc: "朗姆 · 君度 · 柠檬汁", price: "¥75", base: "rum", length: "short" },
+      { zh: "大吉利", en: "Daiquiri", desc: "朗姆 · 青柠汁 · 糖", price: "¥68", base: "rum", length: "short" },
+      { zh: "玛格丽特", en: "Margarita", desc: "龙舌兰 · 君度 · 青柠 · 盐边", price: "¥75", base: "tequila", length: "short" },
+      { zh: "嗨棒", en: "Highball", desc: "威士忌 · 苏打水", price: "¥65", base: "whiskey", length: "long" },
+      { zh: "威士忌酸", en: "Whiskey Sour", desc: "波本 · 柠檬汁 · 糖 · 蛋白", price: "¥78", base: "whiskey", length: "short" },
+      { zh: "长岛冰茶", en: "Long Island Iced Tea", desc: "五种烈酒 · 柠檬 · 可乐", price: "¥98", base: "mix", length: "long" },
+      { zh: "维斯帕", en: "Vesper", desc: "金酒 · 伏特加 · 莉兰开胃酒", price: "¥95", base: "mix", length: "short" }
+    ];
+
+    const baseCategories = {
+      gin: { title: "🍸 金酒 · Gin", items: [] },
+      vodka: { title: "🥃 伏特加 · Vodka", items: [] },
+      rum: { title: "🌴 朗姆 · Rum", items: [] },
+      tequila: { title: "🌵 龙舌兰 · Tequila", items: [] },
+      whiskey: { title: "🥃 威士忌 · Whiskey", items: [] },
+      mix: { title: "🍹 混合烈酒 / 特殊", items: [] }
+    };
+
+    const lengthCategories = {
+      long: { title: "🧊 长饮 · Long Drink", items: [] },
+      short: { title: "🥂 短饮 · Short Drink", items: [] }
+    };
+
+    function renderMenu(categoryType) {
+      const content = document.getElementById('menu-content');
+      let html = '';
+
+      if (categoryType === 'base') {
+        const groups = JSON.parse(JSON.stringify(baseCategories));
+        cocktails.forEach(c => {
+          groups[c.base].items.push(c);
+        });
+        for (let key in groups) {
+          const group = groups[key];
+          if (group.items.length === 0) continue;
+          html += `<div class="category">
+            <div class="category-title">${group.title}</div>`;
+          group.items.forEach(c => {
+            html += `
+            <div class="item">
+              <div class="name-block">
+                <div class="zh-name">${c.zh}</div>
+                <div class="en-name">${c.en}</div>
+                <div class="desc">${c.desc}</div>
+              </div>
+              <div class="price">${c.price}</div>
+            </div>`;
+          });
+          html += `</div>`;
+        }
+      } else if (categoryType === 'length') {
+        const groups = JSON.parse(JSON.stringify(lengthCategories));
+        cocktails.forEach(c => {
+          groups[c.length].items.push(c);
+        });
+        const order = ['short', 'long'];
+        order.forEach(key => {
+          const group = groups[key];
+          if (group.items.length === 0) return;
+          html += `<div class="category">
+            <div class="category-title">${group.title}</div>`;
+          group.items.forEach(c => {
+            html += `
+            <div class="item">
+              <div class="name-block">
+                <div class="zh-name">${c.zh}</div>
+                <div class="en-name">${c.en}</div>
+                <div class="desc">${c.desc}</div>
+              </div>
+              <div class="price">${c.price}</div>
+            </div>`;
+          });
+          html += `</div>`;
+        });
+      }
+      content.innerHTML = html;
+    }
+
+    document.getElementById('category-select').addEventListener('change', function(e) {
+      renderMenu(e.target.value);
+    });
+
+    renderMenu('base');
+  </script>
+</body>
+</html>

@@ -10,56 +10,62 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       background: #1a1e24;
       font-family: 'Georgia', 'PingFang SC', 'Microsoft YaHei', serif;
       display: block;
       min-height: 100vh;
-      padding: 1.5rem;
+      padding: 16px;
       color: #d4d4d4;
     }
+
     .menu {
       max-width: 720px;
       width: 100%;
       background: #faf8f2;
       color: #2d2d2d;
       border-radius: 2rem;
-      padding: 2.5rem 2rem;
+      padding: 24px 16px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
       border: 1px solid #d0c8b0;
       margin: 0 auto;
     }
+
     h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       text-align: center;
       font-weight: 400;
       letter-spacing: 0.3rem;
       color: #3a2c1c;
       border-bottom: 2px solid #c0a97a;
-      padding-bottom: 0.8rem;
-      margin-bottom: 1.5rem;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
       font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
     }
+
     .selector-bar {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
+      gap: 10px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
     }
+
     .selector-bar label {
-      font-size: 0.95rem;
+      font-size: 14px;
       color: #5a4a32;
       font-weight: 500;
       font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
     }
+
     select {
-      padding: 0.5rem 1.2rem;
-      border-radius: 2rem;
+      padding: 8px 12px;
+      border-radius: 999px;
       border: 1px solid #c0a97a;
       background: #fff;
-      font-size: 0.95rem;
+      font-size: 14px;
       color: #3a2c1c;
       outline: none;
       font-family: inherit;
@@ -67,145 +73,195 @@
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233a2c1c' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 1rem center;
-      padding-right: 2.5rem;
+      background-position: right 12px center;
+      padding-right: 36px;
     }
-    /* 随机按钮样式 */
+
     .random-btn-wrap {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 24px;
     }
+
     #randomBtn {
-      padding: 0.6rem 1.6rem;
-      border-radius: 2rem;
+      padding: 10px 20px;
+      border-radius: 999px;
       border: 1px solid #c0a97a;
       background: #ede6d6;
       color: #3a2c1c;
-      font-size: 0.95rem;
+      font-size: 15px;
       cursor: pointer;
       font-family: inherit;
       transition: all 0.2s;
     }
+
     #randomBtn:hover {
       background: #d8cbb8;
     }
+
     .category {
-      margin-bottom: 2rem;
+      margin-bottom: 24px;
     }
+
     .category-title {
-      font-size: 1.2rem;
+      font-size: 18px;
       color: #7a623c;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.2em;
       border-left: 4px solid #c0a97a;
-      padding-left: 0.8rem;
-      margin-bottom: 0.8rem;
+      padding-left: 10px;
+      margin-bottom: 12px;
       font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
     }
+
     .item {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
-      padding: 0.8rem 0;
+      gap: 12px;
+      padding: 16px 0;
       border-bottom: 1px dotted #c0a97a;
       transition: background 0.3s;
     }
+
     .item:hover {
       background: rgba(192,169,122,0.05);
     }
-    /* 随机选中高亮样式 */
+
     .item.active-random {
       background: rgba(192,169,122,0.18);
     }
+
     .item:last-of-type {
       border-bottom: none;
     }
+
     .drink-img {
       width: 60px;
       height: 60px;
+      min-width: 60px;
       min-height: 60px;
-      border-radius: 1rem;
+      border-radius: 12px;
       object-fit: cover;
       background: #e8e0cf;
       flex-shrink: 0;
       border: 1px solid #d0c8b0;
     }
-    .item-content {
+
+    .item-body {
       flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .item-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      flex-wrap: wrap;
-      min-width: 0;
+      gap: 12px;
     }
+
     .name-block {
-      display: flex;
-      flex-direction: column;
+      flex: 1;
       min-width: 0;
     }
+
     .zh-name {
-      font-size: 1.15rem;
+      font-size: 18px;
       font-weight: 500;
       color: #1e1e1e;
       letter-spacing: 0.05em;
     }
+
     .en-name {
-      font-size: 0.75rem;
+      font-size: 13px;
       color: #8b7a62;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      margin-top: 0.15rem;
+      margin-top: 2px;
     }
-    .desc {
-      font-size: 0.8rem;
-      color: #5f5f5f;
-      margin-top: 0.25rem;
-    }
-    .alcohol-info {
-      font-size: 0.75rem;
-      color: #946b44;
-      margin-top: 0.3rem;
-    }
+
     .price {
-      font-size: 1.1rem;
+      font-size: 16px;
       font-weight: 500;
       color: #3a2c1c;
       background: #ede6d6;
-      padding: 0.25rem 0.8rem;
-      border-radius: 2rem;
+      padding: 4px 14px;
+      border-radius: 999px;
       white-space: nowrap;
       flex-shrink: 0;
+      margin-top: 4px;
     }
+
+    .desc {
+      font-size: 14px;
+      color: #5f5f5f;
+      line-height: 1.6;
+      margin-top: 4px;
+      word-break: break-word;
+    }
+
+    .alcohol-info {
+      font-size: 13px;
+      color: #946b44;
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
     .footer-note {
       text-align: center;
-      margin-top: 2rem;
-      font-size: 0.8rem;
+      margin-top: 32px;
+      font-size: 13px;
       color: #8b7a62;
       letter-spacing: 0.1em;
+      line-height: 1.6;
     }
-    @media (max-width: 500px) {
+
+    @media (max-width: 480px) {
       .menu {
-        padding: 2rem 1.2rem;
+        padding: 20px 12px;
       }
+
+      h1 {
+        font-size: 1.6rem;
+        letter-spacing: 0.2rem;
+      }
+
       .item {
-        gap: 0.8rem;
+        gap: 10px;
+        padding: 14px 0;
       }
+
       .drink-img {
-        width: 50px;
-        height: 50px;
-        min-height: 50px;
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        min-height: 52px;
       }
+
+      .zh-name {
+        font-size: 16px;
+      }
+
       .price {
-        margin-top: 0.5rem;
+        font-size: 15px;
+        padding: 4px 12px;
+      }
+
+      .category-title {
+        font-size: 16px;
       }
     }
-    @media (max-width: 380px) {
-      h1 {
-        font-size: 1.8rem;
+
+    @media (max-width: 360px) {
+      .item-top {
+        flex-direction: column;
       }
-      .zh-name {
-        font-size: 1.05rem;
+
+      .price {
+        margin-top: 8px;
+        align-self: flex-start;
       }
     }
   </style>
@@ -222,7 +278,6 @@
       </select>
     </div>
 
-    <!-- 随机喝一杯按钮 -->
     <div class="random-btn-wrap">
       <button id="randomBtn">🎲 随机喝一杯</button>
     </div>
@@ -233,7 +288,6 @@
   </div>
 
   <script>
-    // 临时关闭CDN，使用同目录相对路径
     const CDN_PREFIX = "";
 
     const cocktails = [
@@ -254,7 +308,6 @@
       { zh: "大吉利", en: "Daiquiri", desc: "朗姆 · 青柠汁 · 糖", price: "¥42", base: "rum", length: "short", img: "daiquiri.webp", abv:"23%vol", star:"⭐⭐⭐⭐" },
 
       { zh: "玛格丽特", en: "Margarita", desc: "龙舌兰 · 君度 · 青柠 · 盐边", price: "¥42", base: "tequila", length: "short", img: "margarita.webp", abv:"25%vol", star:"⭐⭐⭐⭐" },
-      // 新增两款龙舌兰鸡尾酒
       { zh: "斗牛士", en: "Matador", desc: "龙舌兰 · 菠萝汁 · 青柠汁", price: "¥42", base: "tequila", length: "short", img: "matador.webp", abv:"22%vol", star:"⭐⭐⭐⭐" },
       { zh: "帕洛玛", en: "Paloma", desc: "龙舌兰 · 西柚汽水 · 青柠", price: "¥36", base: "tequila", length: "long", img: "paloma.webp", abv:"12%vol", star:"⭐⭐" },
 
@@ -289,14 +342,16 @@
           html += `
           <div class="item">
             <img class="drink-img" src="${fullImgUrl}" width="60" height="60" alt="${c.zh}" loading="lazy">
-            <div class="item-content">
-              <div class="name-block">
-                <div class="zh-name">${c.zh}</div>
-                <div class="en-name">${c.en}</div>
-                <div class="desc">${c.desc}</div>
-                <div class="alcohol-info">酒精度 ${c.abv} ｜烈度 ${c.star}</div>
+            <div class="item-body">
+              <div class="item-top">
+                <div class="name-block">
+                  <div class="zh-name">${c.zh}</div>
+                  <div class="en-name">${c.en}</div>
+                </div>
+                <div class="price">${c.price}</div>
               </div>
-              <div class="price">${c.price}</div>
+              <div class="desc">${c.desc}</div>
+              <div class="alcohol-info">酒精度 ${c.abv} ｜烈度 ${c.star}</div>
             </div>
           </div>`;
         });
@@ -330,6 +385,7 @@
           html += `</div>`;
         });
       }
+
       content.innerHTML = html;
     }
 
@@ -339,18 +395,15 @@
 
     renderMenu('base');
 
-    // ========== 随机喝一杯逻辑 ==========
     const randomBtn = document.getElementById('randomBtn');
     randomBtn.addEventListener('click', function () {
       const items = document.querySelectorAll('.item');
-      // 清除之前高亮
       items.forEach(el => el.classList.remove('active-random'));
-      // 随机下标
+
       const randomIndex = Math.floor(Math.random() * items.length);
       const targetItem = items[randomIndex];
-      // 添加高亮
+
       targetItem.classList.add('active-random');
-      // 平滑滚动过去
       targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   </script>

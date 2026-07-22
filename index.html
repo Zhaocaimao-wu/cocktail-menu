@@ -21,7 +21,7 @@
       color: #d4d4d4;
     }
     .menu {
-      max-width: 680px;
+      max-width: 720px;
       width: 100%;
       background: #faf8f2;
       color: #2d2d2d;
@@ -87,18 +87,35 @@
     }
     .item {
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      padding: 0.7rem 0;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.8rem 0;
       border-bottom: 1px dotted #c0a97a;
       transition: background 0.2s;
+      flex-wrap: wrap;
     }
     .item:hover {
       background: rgba(192,169,122,0.05);
     }
     .item:last-of-type {
       border-bottom: none;
+    }
+    .drink-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 1rem;
+      object-fit: cover;
+      background: #e8e0cf;
+      flex-shrink: 0;
+      border: 1px solid #d0c8b0;
+    }
+    .item-content {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      min-width: 200px;
     }
     .name-block {
       display: flex;
@@ -122,7 +139,6 @@
       color: #5f5f5f;
       margin-top: 0.25rem;
       font-style: italic;
-      max-width: 80%;
     }
     .price {
       font-size: 1.1rem;
@@ -132,6 +148,7 @@
       padding: 0.25rem 0.8rem;
       border-radius: 2rem;
       white-space: nowrap;
+      margin-left: 0.5rem;
     }
     .footer-note {
       text-align: center;
@@ -144,8 +161,12 @@
       .menu {
         padding: 2rem 1.2rem;
       }
-      .desc {
-        max-width: 100%;
+      .item {
+        gap: 0.8rem;
+      }
+      .drink-img {
+        width: 50px;
+        height: 50px;
       }
       .price {
         margin-top: 0.4rem;
@@ -171,24 +192,25 @@
   </div>
 
   <script>
+    // 所有图片路径改为本地文件名（与 index.html 同文件夹）
     const cocktails = [
-      { zh: "白色佳人", en: "White Lady", desc: "金酒 · 君度 · 柠檬汁", price: "¥78", base: "gin", length: "short" },
-      { zh: "金汤力", en: "Gin & Tonic", desc: "金酒 · 汤力水 · 柠檬", price: "¥70", base: "gin", length: "long" },
-      { zh: "金菲士", en: "Gin Fizz", desc: "金酒 · 柠檬 · 苏打 · 蛋白", price: "¥78", base: "gin", length: "long" },
-      { zh: "吉姆雷特", en: "Gimlet", desc: "金酒 · 青柠汁 · 糖", price: "¥70", base: "gin", length: "short" },
-      { zh: "干马天尼", en: "Dry Martini", desc: "金酒 · 干味美思 · 橄榄", price: "¥88", base: "gin", length: "short" },
-      { zh: "螺丝起子", en: "Screwdriver", desc: "伏特加 · 橙汁", price: "¥68", base: "vodka", length: "long" },
-      { zh: "大都会", en: "Cosmopolitan", desc: "伏特加 · 蔓越莓 · 青柠", price: "¥82", base: "vodka", length: "short" },
-      { zh: "莫斯科骡子", en: "Moscow Mule", desc: "伏特加 · 姜汁啤酒 · 青柠", price: "¥72", base: "vodka", length: "long" },
-      { zh: "椰林飘香", en: "Piña Colada", desc: "朗姆 · 椰浆 · 菠萝汁", price: "¥85", base: "rum", length: "long" },
-      { zh: "自由古巴", en: "Cuba Libre", desc: "朗姆 · 可乐 · 青柠", price: "¥65", base: "rum", length: "long" },
-      { zh: "X.Y.Z.", en: "X.Y.Z. Cocktail", desc: "朗姆 · 君度 · 柠檬汁", price: "¥75", base: "rum", length: "short" },
-      { zh: "大吉利", en: "Daiquiri", desc: "朗姆 · 青柠汁 · 糖", price: "¥68", base: "rum", length: "short" },
-      { zh: "玛格丽特", en: "Margarita", desc: "龙舌兰 · 君度 · 青柠 · 盐边", price: "¥75", base: "tequila", length: "short" },
-      { zh: "嗨棒", en: "Highball", desc: "威士忌 · 苏打水", price: "¥65", base: "whiskey", length: "long" },
-      { zh: "威士忌酸", en: "Whiskey Sour", desc: "波本 · 柠檬汁 · 糖 · 蛋白", price: "¥78", base: "whiskey", length: "short" },
-      { zh: "长岛冰茶", en: "Long Island Iced Tea", desc: "五种烈酒 · 柠檬 · 可乐", price: "¥98", base: "mix", length: "long" },
-      { zh: "维斯帕", en: "Vesper", desc: "金酒 · 伏特加 · 莉兰开胃酒", price: "¥95", base: "mix", length: "short" }
+      { zh: "白色佳人", en: "White Lady", desc: "金酒 · 君度 · 柠檬汁", price: "¥78", base: "gin", length: "short", img: "white-lady.jpg" },
+      { zh: "金汤力", en: "Gin & Tonic", desc: "金酒 · 汤力水 · 柠檬", price: "¥70", base: "gin", length: "long", img: "gin-tonic.jpg" },
+      { zh: "金菲士", en: "Gin Fizz", desc: "金酒 · 柠檬 · 苏打 · 蛋白", price: "¥78", base: "gin", length: "long", img: "gin-fizz.jpg" },
+      { zh: "吉姆雷特", en: "Gimlet", desc: "金酒 · 青柠汁 · 糖", price: "¥70", base: "gin", length: "short", img: "gimlet.jpg" },
+      { zh: "干马天尼", en: "Dry Martini", desc: "金酒 · 干味美思 · 橄榄", price: "¥88", base: "gin", length: "short", img: "dry-martini.jpg" },
+      { zh: "螺丝起子", en: "Screwdriver", desc: "伏特加 · 橙汁", price: "¥68", base: "vodka", length: "long", img: "screwdriver.jpg" },
+      { zh: "大都会", en: "Cosmopolitan", desc: "伏特加 · 蔓越莓 · 青柠", price: "¥82", base: "vodka", length: "short", img: "cosmopolitan.jpg" },
+      { zh: "莫斯科骡子", en: "Moscow Mule", desc: "伏特加 · 姜汁啤酒 · 青柠", price: "¥72", base: "vodka", length: "long", img: "moscow-mule.jpg" },
+      { zh: "椰林飘香", en: "Piña Colada", desc: "朗姆 · 椰浆 · 菠萝汁", price: "¥85", base: "rum", length: "long", img: "pina-colada.jpg" },
+      { zh: "自由古巴", en: "Cuba Libre", desc: "朗姆 · 可乐 · 青柠", price: "¥65", base: "rum", length: "long", img: "cuba-libre.jpg" },
+      { zh: "X.Y.Z.", en: "X.Y.Z. Cocktail", desc: "朗姆 · 君度 · 柠檬汁", price: "¥75", base: "rum", length: "short", img: "xyz.jpg" },
+      { zh: "大吉利", en: "Daiquiri", desc: "朗姆 · 青柠汁 · 糖", price: "¥68", base: "rum", length: "short", img: "daiquiri.jpg" },
+      { zh: "玛格丽特", en: "Margarita", desc: "龙舌兰 · 君度 · 青柠 · 盐边", price: "¥75", base: "tequila", length: "short", img: "margarita.jpg" },
+      { zh: "嗨棒", en: "Highball", desc: "威士忌 · 苏打水", price: "¥65", base: "whiskey", length: "long", img: "highball.jpg" },
+      { zh: "威士忌酸", en: "Whiskey Sour", desc: "波本 · 柠檬汁 · 糖 · 蛋白", price: "¥78", base: "whiskey", length: "short", img: "whiskey-sour.jpg" },
+      { zh: "长岛冰茶", en: "Long Island Iced Tea", desc: "五种烈酒 · 柠檬 · 可乐", price: "¥98", base: "mix", length: "long", img: "long-island-iced-tea.jpg" },
+      { zh: "维斯帕", en: "Vesper", desc: "金酒 · 伏特加 · 莉兰开胃酒", price: "¥95", base: "mix", length: "short", img: "vesper.jpg" }
     ];
 
     const baseCategories = {
@@ -209,6 +231,23 @@
       const content = document.getElementById('menu-content');
       let html = '';
 
+      function renderGroup(group) {
+        group.items.forEach(c => {
+          html += `
+          <div class="item">
+            <img class="drink-img" src="${c.img}" alt="${c.zh}" loading="lazy">
+            <div class="item-content">
+              <div class="name-block">
+                <div class="zh-name">${c.zh}</div>
+                <div class="en-name">${c.en}</div>
+                <div class="desc">${c.desc}</div>
+              </div>
+              <div class="price">${c.price}</div>
+            </div>
+          </div>`;
+        });
+      }
+
       if (categoryType === 'base') {
         const groups = JSON.parse(JSON.stringify(baseCategories));
         cocktails.forEach(c => {
@@ -219,17 +258,7 @@
           if (group.items.length === 0) continue;
           html += `<div class="category">
             <div class="category-title">${group.title}</div>`;
-          group.items.forEach(c => {
-            html += `
-            <div class="item">
-              <div class="name-block">
-                <div class="zh-name">${c.zh}</div>
-                <div class="en-name">${c.en}</div>
-                <div class="desc">${c.desc}</div>
-              </div>
-              <div class="price">${c.price}</div>
-            </div>`;
-          });
+          renderGroup(group);
           html += `</div>`;
         }
       } else if (categoryType === 'length') {
@@ -243,17 +272,7 @@
           if (group.items.length === 0) return;
           html += `<div class="category">
             <div class="category-title">${group.title}</div>`;
-          group.items.forEach(c => {
-            html += `
-            <div class="item">
-              <div class="name-block">
-                <div class="zh-name">${c.zh}</div>
-                <div class="en-name">${c.en}</div>
-                <div class="desc">${c.desc}</div>
-              </div>
-              <div class="price">${c.price}</div>
-            </div>`;
-          });
+          renderGroup(group);
           html += `</div>`;
         });
       }

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>经典鸡尾酒单</title>
   <style>
     * {
@@ -13,9 +13,8 @@
     body {
       background: #1a1e24;
       font-family: 'Georgia', 'PingFang SC', 'Microsoft YaHei', serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      /* 修复：长页面手机不会顶部截断，改为纵向正常流布局 */
+      display: block;
       min-height: 100vh;
       padding: 1.5rem;
       color: #d4d4d4;
@@ -29,6 +28,7 @@
       padding: 2.5rem 2rem;
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
       border: 1px solid #d0c8b0;
+      margin: 0 auto;
     }
     h1 {
       font-size: 2.2rem;
@@ -87,12 +87,11 @@
     }
     .item {
       display: flex;
-      align-items: center;
+      align-items: flex-start; /* 修改：从center改为顶部对齐，解决换行错位 */
       gap: 1rem;
       padding: 0.8rem 0;
       border-bottom: 1px dotted #c0a97a;
       transition: background 0.2s;
-      flex-wrap: wrap;
     }
     .item:hover {
       background: rgba(192,169,122,0.05);
@@ -114,13 +113,14 @@
       flex: 1;
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-start;
       flex-wrap: wrap;
-      min-width: 200px;
+      min-width: 0; /* ✅关键修复：阻止文字容器无限撑开 */
     }
     .name-block {
       display: flex;
       flex-direction: column;
+      min-width: 0; /* ✅关键：长文本自动换行 */
     }
     .zh-name {
       font-size: 1.15rem;
@@ -139,7 +139,6 @@
       font-size: 0.8rem;
       color: #5f5f5f;
       margin-top: 0.25rem;
-      font-style: italic;
     }
     .alcohol-info {
       font-size: 0.75rem;
@@ -154,7 +153,7 @@
       padding: 0.25rem 0.8rem;
       border-radius: 2rem;
       white-space: nowrap;
-      margin-left: 0.5rem;
+      flex-shrink: 0;
     }
     .footer-note {
       text-align: center;
@@ -163,6 +162,7 @@
       color: #8b7a62;
       letter-spacing: 0.1em;
     }
+    /* 手机媒体查询 */
     @media (max-width: 500px) {
       .menu {
         padding: 2rem 1.2rem;
@@ -173,9 +173,19 @@
       .drink-img {
         width: 50px;
         height: 50px;
+        min-height: 50px;
       }
       .price {
-        margin-top: 0.4rem;
+        margin-top: 0.5rem;
+      }
+    }
+    /* 超小屏额外兼容（400px以下手机） */
+    @media (max-width: 380px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .zh-name {
+        font-size: 1.05rem;
       }
     }
   </style>
